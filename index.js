@@ -2,14 +2,17 @@
 import express from "express";
 const app = express();
 
-function handleHome(req, res) {
-  console.log(req);
-  res.send("hello from home");
-}
+const home = (req, res) => {
+  res.send("its home ");
+};
+const betweenHome = (req, res, next) => {
+  console.log("im middleware");
+  next();
+};
 
-function handleProfile(req, res) {}
+app.use(betweenHome);
 
-app.get("/", (req, res) => {});
+app.get("/", home);
 
 app.get("/profile", (req, res) => {
   res.send("you are on my profile");
