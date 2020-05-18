@@ -14,10 +14,10 @@ const CHANGE_PASSWORD = "/change-password";
 
 //videos
 const VIDEOS = "/videos";
+const UPLOAD = "/upload";
 const VIDEO_DETAIL = "/:id";
 const EDIT_VIDEO = "/:id/edit";
 const DELETE_VIDEO = "/:id/delete";
-const UPLOAD_VIDEO = "/:id/upload";
 
 const routes = {
   home: HOME,
@@ -33,7 +33,7 @@ const routes = {
   videoDetail: VIDEO_DETAIL,
   editVideo: EDIT_VIDEO,
   deleteVideo: DELETE_VIDEO,
-  uploadVideo: UPLOAD_VIDEO,
+  upload: UPLOAD,
 };
 
 export default routes;
