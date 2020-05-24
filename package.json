@@ -21,7 +21,7 @@
     "pug": "^2.0.4"
   },
   "scripts": {
-    "dev:server": "nodemon --exec node init.js --delay 2",
+    "dev:server": "nodemon --exec node init.js --delay 2  --ignore 'scss' ",
     "dev:assets": "cross-env WEBPACK_ENV=development webpack  --config ./webpack.config.cjs  -w",
     "build:assets": "cross-env WEBPACK_ENV=production webpack"
   },
