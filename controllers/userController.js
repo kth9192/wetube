@@ -132,13 +132,13 @@ export const users = (req, res) => {
   res.render('users', { pageTitle: 'users' });
 };
 export const userDetail = async (req, res) => {
-  console.log('userDetail', req.user.avatarUrl);
-
   const {
     params: { id },
   } = req;
   try {
     const user = await User.findById(id).populate('videos');
+    console.log(user);
+
     res.render('userDetail', { pageTitle: 'user Detail', user });
   } catch (error) {
     res.redirect(routes.home);
