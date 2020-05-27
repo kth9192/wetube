@@ -8,13 +8,13 @@ import {
   getEditVideo,
   postEditVideo,
 } from '../controllers/videoController.js';
-import { uploadMiddleware, onlyPrivate } from '../middlwares.js';
+import { uploadVideo, onlyPrivate } from '../middlwares.js';
 
 const videoRotuer = express.Router();
 
 //  Upload
 videoRotuer.get(routes.upload, onlyPrivate, getUpload);
-videoRotuer.post(routes.upload, onlyPrivate, uploadMiddleware, postUpload);
+videoRotuer.post(routes.upload, onlyPrivate, uploadVideo, postUpload);
 
 //  video detail
 videoRotuer.get(routes.videoDetail(), videoDetail);
