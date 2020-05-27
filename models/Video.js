@@ -1,13 +1,13 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const VideoSchema = new mongoose.Schema({
   fileUrl: {
     type: String,
-    required: "File URL is required",
+    required: 'File URL is required',
   },
   title: {
     type: String,
-    required: "Title is required",
+    required: 'Title is required',
   },
   description: {
     type: String,
@@ -16,6 +16,10 @@ const VideoSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
   createdAt: {
     type: Date,
     default: Date.now(),
@@ -23,11 +27,11 @@ const VideoSchema = new mongoose.Schema({
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Comment",
+      ref: 'Comment',
     },
   ],
 });
 
-const model = mongoose.model("Video", VideoSchema);
+const model = mongoose.model('Video', VideoSchema);
 
 export default model;

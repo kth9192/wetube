@@ -22,6 +22,7 @@ export const postJoin = async (req, res, next) => {
       const user = await User({
         name,
         email,
+        avatarUrl: null,
       });
       await User.register(user, password);
       next();
@@ -137,14 +138,13 @@ export const userDetail = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const user = await User.findById(id);
+    const user = await User.findById(id).populate('videos');
     res.render('userDetail', { pageTitle: 'user Detail', user });
   } catch (error) {
     res.redirect(routes.home);
   }
-
-  res.render('userDetail', { pageTitle: 'user Detail' });
 };
+
 export const getEditProfile = (req, res) => {
   res.render('editProfile', { pageTitle: 'edit Profile' });
 };
