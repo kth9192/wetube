@@ -3,9 +3,9 @@ include mixins/videoPlayer
 
 block content
     .video-detail__container
-
-        .videoPlayer 
-            video(src=`/${video.fileUrl}`)
+        +videoPlayer({
+            src:video.fileUrl
+        })
         .video__info
             if video.creator.id === loggedUser.id
                 a(href=routes.editVideo(video.id))
