@@ -86,7 +86,7 @@ const getCurrentTime = () => {
   currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
 };
 
-const setTotalTime = () => {
+const setTotalTime = async () => {
   totalTime.innerHTML = formatDate(videoPlayer.duration);
   setInterval(getCurrentTime, 1000);
 };
