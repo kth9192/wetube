@@ -5,6 +5,10 @@
   "author": "kth",
   "license": "MIT",
   "type": "module",
+  "babel": {
+    "presets": ["@babel/preset-env"],
+    "plugins": ["@babel/plugin-syntax-import-meta"]
+  },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "autoprefixer": "^9.8.0",
@@ -29,17 +33,20 @@
     "pug": "^2.0.4"
   },
   "scripts": {
-    "dev:server": "nodemon --exec node init.js --delay 2  --ignore 'scss' --ignore 'static' ",
-    "dev:assets": "cross-env WEBPACK_ENV=development webpack  --config ./webpack.config.cjs  -w",
-    "build:assets": "cross-env WEBPACK_ENV=production webpack",
-    "build:server": "babel ",
-    "build": "yarn build:server && yarn build:assets"
-
+    "dev:server": "nodemon --exec node src/init.js --delay 2  --ignore 'scss' --ignore 'static' ",
+    "dev:assets": "cd src && cross-env WEBPACK_ENV=development webpack --config ./webpack.config.cjs -w",
+    "build:assets": "cd src && cross-env WEBPACK_ENV=production webpack --config ./webpack.config.cjs",
+    "build:server": "babel src --out-dir build --ignore 'src/assets','src/static','src/webpack.config.cjs'",
+    "copyAll": "xcopy .\\src\\static .\\build\\static\\ /s /y && xcopy .\\src\\views .\\build\\views\\ /s /y",
+    "build": "yarn build:server && yarn build:assets && yarn copyAll",
+    "prebuild": "rd /s /q build",
+    "start": "node build/init.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
     "@babel/node": "^7.8.7",
+    "@babel/plugin-syntax-import-meta": "^7.10.1",
     "@babel/preset-env": "^7.9.6",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",

@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import './db.js';
 import dotenv from 'dotenv';
 import app from './app.js';

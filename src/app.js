@@ -7,6 +7,7 @@ import passport from 'passport';
 import mongoose from 'mongoose';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
+import path from 'path';
 
 import globalRouter from './routers/globalRouter.js';
 import userRouter from './routers/userRouter.js';
@@ -16,13 +17,16 @@ import routes from './routes.js';
 import { localMiddleware } from './middlwares.js';
 import './passport.js';
 
+// eslint-disable-next-line no-underscore-dangle
+const __dirname = new URL('.', import.meta.url).pathname.substring(1);
+
 const app = express();
 const CookieStore = MongoStore(session);
 
 app.use(helmet());
 app.set('view engine', 'pug');
-app.use('/uploads', express.static('uploads'));
-app.use('/static', express.static('static'));
+app.set('views', path.join(__dirname, 'views'));
+app.use('/static', express.static(path.join(__dirname, 'static')));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
