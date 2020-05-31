@@ -4,14 +4,6 @@
   "description": "Cloning Youtube with Vanilla and nodejs",
   "author": "kth",
   "license": "MIT",
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ],
-    "plugins": [
-      "@babel/plugin-syntax-import-meta"
-    ]
-  },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "autoprefixer": "^9.8.0",
@@ -43,7 +35,8 @@
     "copyAll": "cp -R src/static build && cp -R src/views build",
     "build": "yarn build:server && yarn build:assets && yarn copyAll",
     "prebuild": "rm -rf build",
-    "start": "node build/init.js"
+    "start": "node build/init.js",
+    "prestart": "yarn build"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
