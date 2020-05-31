@@ -19,8 +19,11 @@ import routes from './routes.js';
 import { localMiddleware } from './middlwares.js';
 import './passport.js';
 
+const environment = process.env.NODE_ENV || 'development';
+
 // eslint-disable-next-line no-underscore-dangle
-const __dirname = process.cwd();
+const __dirname =
+  environment === 'development' ? process.cwd() : `${process.cwd()}/build`;
 // const __dirname = new URL('.', import.meta.url).pathname.substring(1);
 
 const app = express();
