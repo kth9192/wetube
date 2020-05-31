@@ -36,7 +36,8 @@
     "build": "yarn build:server && yarn build:assets && yarn copyAll",
     "prebuild": "rm -rf build",
     "start": "node build/init.js",
-    "prestart": "yarn build"
+    "prestart": "yarn build",
+    "heroku-prebuild": "rm -rf node_modules"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
