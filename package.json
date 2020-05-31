@@ -6,8 +6,12 @@
   "license": "MIT",
   "type": "module",
   "babel": {
-    "presets": ["@babel/preset-env"],
-    "plugins": ["@babel/plugin-syntax-import-meta"]
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-syntax-import-meta"
+    ]
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
@@ -37,7 +41,7 @@
     "dev:assets": "cd src && cross-env WEBPACK_ENV=development webpack --config ./webpack.config.cjs -w",
     "build:assets": "cd src && cross-env WEBPACK_ENV=production webpack --config ./webpack.config.cjs",
     "build:server": "babel src --out-dir build --ignore 'src/assets','src/static','src/webpack.config.cjs'",
-    "copyAll": "xcopy .\\src\\static .\\build\\static\\ /s /y && xcopy .\\src\\views .\\build\\views\\ /s /y",
+    "copyAll": "xcopy .\\src\\static .\\build\\static\\ && xcopy .\\src\\views .\\build\\views\\",
     "build": "yarn build:server && yarn build:assets && yarn copyAll",
     "prebuild": "rd /s /q build",
     "start": "node build/init.js"
