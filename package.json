@@ -4,6 +4,7 @@
   "description": "Cloning Youtube with Vanilla and nodejs",
   "author": "kth",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "autoprefixer": "^9.8.0",
