@@ -10,6 +10,7 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import path from 'path';
+import flash from 'express-flash';
 
 import globalRouter from './routers/globalRouter.js';
 import userRouter from './routers/userRouter.js';
@@ -23,8 +24,12 @@ const environment = process.env.NODE_ENV || 'development';
 
 // eslint-disable-next-line no-underscore-dangle
 const __dirname =
-  environment === 'development' ? process.cwd() : `${process.cwd()}/build`;
+  environment === 'development'
+    ? `${process.cwd()}/src`
+    : `${process.cwd()}/build`;
 // const __dirname = new URL('.', import.meta.url).pathname.substring(1);
+
+console.log(__dirname);
 
 const app = express();
 const CookieStore = MongoStore(session);
@@ -45,6 +50,7 @@ app.use(
     store: new CookieStore({ mongooseConnection: mongoose.connection }),
   }),
 );
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
