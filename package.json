@@ -4,7 +4,6 @@
   "description": "Cloning Youtube with Vanilla and nodejs",
   "author": "kth",
   "license": "MIT",
-  "type": "module",
   "babel": {
     "presets": [
       "@babel/preset-env"
