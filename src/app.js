@@ -20,6 +20,7 @@ import { localMiddleware } from './middlwares.js';
 import './passport.js';
 
 // eslint-disable-next-line no-underscore-dangle
+const __dirname = process.cwd();
 // const __dirname = new URL('.', import.meta.url).pathname.substring(1);
 
 const app = express();
